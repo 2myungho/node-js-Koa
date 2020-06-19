@@ -34,7 +34,7 @@ app.use(router.routes()).use(router.allowedMethods())
 
 //post가 지정되어 있지 않다면 4000을 사용
 const port = PORT || 4000;
-app.listen(4000, () => {
+app.listen(port, () => {
     console.log('Listening to port %d',port)
 })
 //서버를 포트 4000번으로 열고 서버에 접속하면 'hello world'라는 텍스트를 반환
