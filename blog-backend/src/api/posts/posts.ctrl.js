@@ -24,7 +24,7 @@ export const write = async ctx => {
   }
 };
 
-export const list = ctx => {
+export const list = async ctx => {
   try {
     const posts = await Post.find().exec();
     ctx.body = posts;
@@ -33,7 +33,19 @@ export const list = ctx => {
   }
 };
 
-export const read = ctx => {};
+export const read = async ctx => {
+  const {id} = ctx.params;
+  try{
+    const post = await Post.finddById(id).exec();
+    if(!post){
+      ctx.status = 404;
+      return;
+    }
+    ctx.body = post;
+  }catch(e){
+    ctx.theow(500,e)
+  }
+};
 
 export const remove = ctx => {};
 
