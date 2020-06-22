@@ -63,9 +63,8 @@ export const list = async ctx => {
 
   if (page < 1) {
     ctx.status = 400;
-    return;
+    return
   }
-
   try {
     const posts = await Post.find()
       .sort({ _id: -1 })
